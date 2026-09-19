@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | College Lost & Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loginScreen" class="login-page">
+  <div class="login-showcase">
+    <div class="brand-light"><div class="logo-light">CF</div><div><b>CampusFind</b><span>College Lost & Found</span></div></div>
+    <div class="showcase-copy">
+      <span class="eyebrow light">SMART COLLEGE PORTAL</span>
+      <h1>Lost something?<br><em>Find it on campus.</em></h1>
+      <p>One secure place for students and lecturers to report lost items, share found belongings and reunite them with their owners.</p>
+      <div class="trust"><span>✓ Students</span><span>✓ Lecturers</span><span>✓ Finder Rewards</span></div>
+    </div>
+    <div class="showcase-bottom">Campus community • Helping belongings find their way home</div>
+  </div>
+
+  <div class="login-panel">
+    <div class="login-card">
+      <div class="mobile-brand"><b>CampusFind</b><span>College Lost & Found</span></div>
+      <span class="eyebrow">COLLEGE LOGIN</span>
+      <h2 id="authTitle">Welcome back</h2>
+      <p id="authSubtitle" class="muted">Sign in with your college account.</p>
+
+      <div id="roleSwitch" class="role-switch">
+        <button type="button" class="active" data-role="student">🎓 Student</button>
+        <button type="button" data-role="lecturer">👨‍🏫 Lecturer</button>
+      </div>
+      <div id="authMessage" class="auth-message"></div>
+
+      <form id="loginForm">
+        <label>College Email<input id="loginEmail" type="email" placeholder="student@college.edu" required></label>
+        <label>Password<input id="loginPassword" type="password" placeholder="Enter your password" required></label>
+        <div class="login-options">
+          <label class="remember"><input id="rememberMe" type="checkbox" checked> Remember me</label>
+          <button type="button" class="text-button" id="forgotButton">Forgot password?</button>
+        </div>
+        <button class="primary full" type="submit">Sign in to CampusFind →</button>
+      </form>
+
+      <form id="registerForm" class="hidden">
+        <label>Full Name<input id="registerName" type="text" placeholder="Enter your name" required></label>
+        <label>College Email<input id="registerEmail" type="email" placeholder="name@college.edu" required></label>
+        <label>Password<input id="registerPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required></label>
+        <button class="primary full" type="submit">Create College Account →</button>
+      </form>
+
+      <form id="forgotForm" class="hidden">
+        <label>College Email<input id="forgotEmail" type="email" placeholder="name@college.edu" required></label>
+        <label>New Password<input id="forgotPassword" type="password" minlength="6" placeholder="Minimum 6 characters" required></label>
+        <button class="primary full" type="submit">Reset Password →</button>
+      </form>
+
+      <div id="authSwitch" class="auth-switch">New to CampusFind? <button id="registerButton" type="button">Create account</button></div>
+      <div class="demo-login"><b>Demo Login</b><span>Student: student@college.edu / student123</span><span>Lecturer: lecturer@college.edu / lecturer123</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <header class="navbar">
+    <div class="brand"><div class="logo">CF</div><div><b>CampusFind</b><span>College Lost & Found</span></div></div>
+    <nav><a href="#home">Home</a><a href="#items">Browse</a><a href="#rewards">Rewards</a><a href="#about">How it works</a></nav>
+    <div class="profile-mini"><div id="userAvatar" class="avatar">S</div><div><b id="userName">User</b><small id="userRole">Student</small></div><button id="logoutButton">Logout</button></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">WELCOME, <span id="welcomeRole">STUDENT</span></span>
+        <h1>Let’s reunite <em>lost belongings.</em></h1>
+        <p>Search your campus reports, report something you found, or tell the community about something you lost.</p>
+        <div class="hero-actions"><button class="primary" id="reportHero">+ Report Item</button><button class="secondary" id="browseHero">Browse Reports ↓</button></div>
+      </div>
+      <div class="profile-card">
+        <div id="bigAvatar" class="big-avatar">S</div>
+        <h3 id="profileName">Student</h3><span id="profileRole">Student</span>
+        <div class="points-box"><strong id="profilePoints">0</strong><small>Finder points</small></div>
+        <p>Return a found item to its owner and earn reward points.</p>
+      </div>
+    </section>
+
+    <section class="stats"><div><strong id="totalStat">0</strong><span>Total reports</span></div><div><strong id="lostStat">0</strong><span>Lost items</span></div><div><strong id="foundStat">0</strong><span>Found items</span></div><div><strong id="recoveredStat">0</strong><span>Recovered</span></div></section>
+
+    <section class="section" id="items">
+      <div class="section-head"><div><span class="eyebrow">CAMPUS REPORTS</span><h2>Search lost & found items</h2><p>Search by item name, description or campus location.</p></div><button class="primary" id="reportTop">+ Report Item</button></div>
+      <div class="filters"><div class="big-search">⌕<input id="search" placeholder="Search item, location, description..."></div><select id="type"><option>All</option><option>Lost</option><option>Found</option></select><select id="category"><option>All</option><option>Electronics</option><option>Accessories</option><option>Documents</option><option>Books</option><option>Others</option></select></div>
+      <div id="itemsGrid" class="items-grid"></div>
+    </section>
+
+    <section class="reward-section" id="rewards">
+      <div><span class="eyebrow light">FINDER REWARDS</span><h2>Good deeds earn campus points 🏆</h2><p>When a person reports an item as <b>Found</b> and later confirms that the owner collected it, the finder receives <b>25 points</b>. This makes returning belongings rewarding for the whole campus community.</p></div>
+      <div class="reward-card"><span>SUCCESSFUL RETURN</span><strong>+25</strong><small>FINDER POINTS</small></div>
+    </section>
+
+    <section class="section" id="about"><span class="eyebrow">PROJECT REVIEW-3</span><h2>How it works</h2><div class="steps"><div><b>01</b><h3>Login</h3><p>Students and lecturers use a college account.</p></div><div><b>02</b><h3>Report & Search</h3><p>Upload Lost/Found reports and search the central database.</p></div><div><b>03</b><h3>Claim & Verify</h3><p>The owner contacts the finder and verifies the item.</p></div><div><b>04</b><h3>Return & Reward</h3><p>The finder confirms the return and receives 25 points.</p></div></div></section>
+  </main>
+  <footer><b>CampusFind</b><span>College Lost & Found Item Tracker</span><span>Front-End + Database • Project Review-3</span></footer>
+</div>
+
+<div id="reportModal" class="modal"><div class="modal-box"><button class="close" data-close="reportModal">×</button><span class="eyebrow">NEW REPORT</span><h2>Report a lost or found item</h2><form id="reportForm"><div class="form-grid"><label>Item name*<input name="item_name" required placeholder="e.g. Black wallet"></label><label>Category*<select name="category"><option>Electronics</option><option>Accessories</option><option>Documents</option><option>Books</option><option>Others</option></select></label><label>Report type*<select name="report_type"><option>Lost</option><option>Found</option></select></label><label>Date*<input type="date" name="report_date" required></label><label>Location*<input name="location" required placeholder="Block / Lab / Library"></label><label>Contact*<input name="contact" required placeholder="College email or phone"></label></div><label>Image URL (optional)<input name="image_url" placeholder="https://..."></label><label>Description*<textarea name="description" required placeholder="Colour, brand, identifying marks..."></textarea></label><button class="primary full">Submit Report</button></form></div></div>
+
+<div id="claimModal" class="modal"><div class="modal-box small"><button class="close" data-close="claimModal">×</button><span class="eyebrow">ITEM CLAIM</span><h2 id="claimTitle">Claim Item</h2><p id="claimMeta" class="muted"></p><form id="claimForm"><label>Your contact*<input id="claimContact" required placeholder="Phone or college email"></label><label>Message*<textarea id="claimMessage" required placeholder="Explain why you found it / why it belongs to you..."></textarea></label><input type="hidden" id="claimItemId"><button class="primary full">Send Claim Request</button></form></div></div>
+
+<div id="toast">Done</div>
+<script src="app.js"></script>
+</body>
+</html>
